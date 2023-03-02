@@ -15,4 +15,18 @@ function getComputerChoice(){
 
 }
 
-console.log(getComputerChoice())
+playRound(playerChoice, computerChoice){
+
+    playerChoice= playerChoice.toLowerCase()
+    computerChoice = computerChoice.toLowerCase()
+    
+    if(playerChoice === computerChoice){
+        return 'Draw'
+    }
+    else if((playerChoice == 'rock' && computerChoice == 'paper') || (playerChoice == 'paper' && computerChoice == 'scissors') || (playerChoice == 'scissors' && computerChoice == 'rock')){
+        return `You lost!${computerChoice.charAt(0).toUpperCase()} beats ${playerChoice} `
+    }
+    else{
+        return `You win!${playerChoice.charAt(0).toUpperCase()} beats ${computerChoice}`
+    }
+}
