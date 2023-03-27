@@ -15,23 +15,123 @@ function getComputerChoice(){
 
 }
 
-function playRound(playerChoice, computerChoice){
+function playRound(playerChoice){
 
     playerChoice= playerChoice.toLowerCase()
-    computerChoice = computerChoice.toLowerCase()
+    computerChoice = getComputerChoice().toLowerCase()
 
     if(playerChoice === computerChoice){
-        return 'Draw'
+        alert ('Draw')
+        return 1
     }
     else if((playerChoice == 'rock' && computerChoice == 'paper') || (playerChoice == 'paper' && computerChoice == 'scissors') || (playerChoice == 'scissors' && computerChoice == 'rock')){
-        console.log(`You lost!${computerChoice} beats ${playerChoice} `)
-        return 'Lose'
+        alert(`You lost! ${computerChoice} beats ${playerChoice} `)
+        return 2
     }
     else{
-        console.log(`You win!${playerChoice} beats ${computerChoice}`)
-        return 'Win'
+        alert(`You win! ${playerChoice} beats ${computerChoice}`)
+        return 3
     }
 }
+
+let rock = document.getElementById("rock");
+let paper = document.getElementById("paper");
+let scissors = document.getElementById("scissors");
+let roundResult = document.getElementById('roundResult');
+let restart = document.getElementById('restart');
+let div = document.querySelector('.results');
+let playerWIns = 0;
+let computerWins = 0;
+let gameCount = 0;
+let gameText = document.querySelector("#game-count");
+
+rock.addEventListener('click',()=>{
+    
+    gameCount +=1
+   let res =  playRound('rock')
+    if(res === 3){
+        playerWIns +=1;
+    }
+    else if(res === 2){
+        computerWins +=1
+    }
+    if(gameCount >= 5){
+        let result = document.createElement('h1');
+        
+        if(playerWIns > computerWins){
+            result.innerText = `You win!`
+        }else if(computerWins < playerWIns){
+            result.innerText = 'Sorry, you lose.'
+        }else{
+            result.innerText= "It's a draw!"
+        }
+    
+        div.appendChild(result);
+        }
+
+    roundResult.innerText = `Result: ${playerWIns} : ${computerWins}`;
+    gameText.innerText = `Game Count: ${gameCount}`;
+}
+);
+
+paper.addEventListener('click',()=>{
+    gameCount +=1
+    let res =  playRound('paper')
+    if(res === 3){
+        playerWIns +=1;
+    }
+    else if(res === 2){
+        computerWins +=1
+    }
+    if(gameCount >= 5){
+        let result = document.createElement('h1');
+        
+        if(playerWIns > computerWins){
+            result.innerText = `You win!`
+        }else if(computerWins < playerWIns){
+            result.innerText = 'Sorry, you lose.'
+        }else{
+            result.innerText= "It's a draw!"
+        }
+    
+        div.appendChild(result);
+        }
+
+    roundResult.innerText = `Result: ${playerWIns} : ${computerWins}`;
+    gameText.innerText = `Game Count: ${gameCount}`;
+}
+);
+
+scissors.addEventListener('click',()=>{
+    gameCount +=1
+    let res =  playRound('scissors')
+    if(res === 3){
+        playerWIns +=1;
+    }
+    else if(res === 2){
+        computerWins +=1
+    }
+    if(gameCount >= 5){
+        let result = document.createElement('h1');
+        
+        if(playerWIns > computerWins){
+            result.innerText = `You win!`
+        }else if(computerWins < playerWIns){
+            result.innerText = 'Sorry, you lose.'
+        }else{
+            result.innerText= "It's a draw!"
+        }
+    
+        div.appendChild(result);
+        }
+
+    roundResult.innerText = `Result: ${playerWIns} : ${computerWins}`;
+    gameText.innerText = `Game Count: ${gameCount}`;
+}
+);
+
+
+/*
 
 function game(){
     let playerWins=0
@@ -57,3 +157,4 @@ function game(){
         console.log('Its a draw')
     }
 }
+*/
