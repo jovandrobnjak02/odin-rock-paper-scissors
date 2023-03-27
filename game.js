@@ -130,7 +130,10 @@ scissors.addEventListener('click',()=>{
 }
 );
 
-
+restart.addEventListener('click',
+()=>{
+    document.location.reload();
+})
 /*
 
 function game(){
